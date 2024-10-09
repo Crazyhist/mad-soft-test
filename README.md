@@ -1,5 +1,19 @@
 # React + TypeScript + Vite
 
+Установка и запуск
+
+1. git clone https://github.com/your-username/your-repository.git
+2. cd your-repository
+3. npm i
+4. npm run dev 
+
+Основной Стек
+
+1. React + Ts
+2. react-hook-form
+3. mui
+4. FSD 
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
