@@ -1,4 +1,9 @@
-export type QuestionType = 'single' | 'multiple' | 'short' | 'long'
+export enum QuestionType {
+	Single = 'single',
+	Multiple = 'multiple',
+	Short = 'short',
+	Long = 'long',
+}
 
 export interface Question {
 	id: string
@@ -24,46 +29,46 @@ export const mockTest: Test = {
 	questions: [
 		{
 			id: 'q1',
-			type: 'single',
+			type: QuestionType.Single,
 			question: 'Какой цвет неба?',
 			options: ['Синий', 'Зеленый', 'Красный'],
 		},
 		{
 			id: 'q2',
-			type: 'multiple',
+			type: QuestionType.Multiple,
 			question: 'Выберите фрукты',
 			options: ['Яблоко', 'Морковь', 'Банан'],
 		},
 		{
 			id: 'q3',
-			type: 'short',
+			type: QuestionType.Short,
 			question: 'Столица Франции',
 		},
 		{
 			id: 'q4',
-			type: 'long',
+			type: QuestionType.Long,
 			question: 'Опишите свои впечатления от путешествия',
 		},
 		{
 			id: 'q5',
-			type: 'single',
+			type: QuestionType.Single,
 			question: 'Какой цвет неба?',
 			options: ['Синий', 'Зеленый', 'Красный'],
 		},
 		{
 			id: 'q6',
-			type: 'multiple',
+			type: QuestionType.Multiple,
 			question: 'Выберите фрукты',
 			options: ['Яблоко', 'Морковь', 'Банан'],
 		},
 		{
 			id: 'q7',
-			type: 'short',
+			type: QuestionType.Short,
 			question: 'Столица Франции',
 		},
 		{
 			id: 'q8',
-			type: 'long',
+			type: QuestionType.Long,
 			question: 'Опишите свои впечатления от путешествия',
 		},
 	],
