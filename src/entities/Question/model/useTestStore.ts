@@ -2,10 +2,13 @@ import { Answers } from '@/entities/Question/model/types'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-interface TestStore {
+interface TestState {
 	currentQuestionIndex: number
 	answers: Answers
 	timeLeft: number
+}
+
+interface TestActions {
 	setAnswer: (questionId: string, answer: string | string[]) => void
 	getAnswer: (questionId: string) => string | string[] | null
 	nextQuestion: () => void
@@ -14,6 +17,8 @@ interface TestStore {
 	resetTest: () => void
 	setTimeLeft: (time: number) => void
 }
+
+type TestStore = TestState & TestActions
 
 const useTestStore = create<TestStore>()(
 	persist(

@@ -1,20 +1,20 @@
+import useTestStore from '@/entities/Question/model/useTestStore'
 import Question from '@/entities/Question/ui/Question'
-import useTestStore from '@/features/TestProgress/model/useTestStore'
 import { mockTest } from '@/shared/api/mockTest'
 import { formatTime } from '@/shared/utils/timeUtils'
 import { Box, Button, Container, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 const TestPage = () => {
-	const {
-		currentQuestionIndex,
-		timeLeft,
-		setAnswer,
-		nextQuestion,
-		decrementTime,
-		resetTest,
-		setTimeLeft,
-	} = useTestStore()
+	const currentQuestionIndex = useTestStore(
+		(state) => state.currentQuestionIndex
+	)
+	const timeLeft = useTestStore((state) => state.timeLeft)
+	const setAnswer = useTestStore((state) => state.setAnswer)
+	const nextQuestion = useTestStore((state) => state.nextQuestion)
+	const decrementTime = useTestStore((state) => state.decrementTime)
+	const resetTest = useTestStore((state) => state.resetTest)
+	const setTimeLeft = useTestStore((state) => state.setTimeLeft)
 
 	const currentQuestion = mockTest.questions[currentQuestionIndex]
 	const [currentAnswer, setCurrentAnswer] = useState<string | string[] | null>(
@@ -77,7 +77,6 @@ const TestPage = () => {
 				</Typography>
 			</Box>
 
-			{/* Навигационная шкала */}
 			<Box display='flex' justifyContent='center' alignItems='center' mb={4}>
 				{mockTest.questions.map((_, index) => (
 					<Box

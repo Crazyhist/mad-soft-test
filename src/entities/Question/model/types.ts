@@ -1,3 +1,5 @@
+export type QuestionId = string
+
 export enum QuestionType {
 	Single = 'single',
 	Multiple = 'multiple',
@@ -6,7 +8,7 @@ export enum QuestionType {
 }
 
 export interface Question {
-	id: string
+	id: QuestionId
 	type: QuestionType
 	question: string
 	options?: string[]

@@ -12,8 +12,8 @@ const SingleChoiceQuestion = ({
 	onAnswerSelect,
 }: SingleChoiceQuestionProps) => {
 	const { register, watch } = useForm<{ answer: string }>()
-
 	const selectedAnswer = watch('answer')
+
 	useEffect(() => {
 		if (selectedAnswer) {
 			onAnswerSelect(selectedAnswer)
