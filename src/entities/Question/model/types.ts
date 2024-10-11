@@ -1,4 +1,9 @@
-export type QuestionType = 'single' | 'multiple' | 'short' | 'long'
+export enum QuestionType {
+	Single = 'single',
+	Multiple = 'multiple',
+	Short = 'short',
+	Long = 'long',
+}
 
 export interface Question {
 	id: string

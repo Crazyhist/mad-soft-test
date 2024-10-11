@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Question as QuestionType } from '../model/types'
+import { Question } from '../model/types'
 
 interface SingleChoiceQuestionProps {
-	question: QuestionType
+	question: Question
 	onAnswerSelect: (answer: string) => void
 }
 

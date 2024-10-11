@@ -1,9 +1,9 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Question as QuestionType } from '../model/types'
+import { Question } from '../model/types'
 
 interface ShortAnswerQuestionProps {
-	question: QuestionType
+	question: Question
 	onAnswerSelect: (answer: string) => void
 }
 
@@ -12,10 +12,9 @@ const ShortAnswerQuestion = ({
 	onAnswerSelect,
 }: ShortAnswerQuestionProps) => {
 	const { register, watch } = useForm<{ answer: string }>()
-
-	// Отслеживаем изменения ответа
 	const answer = watch('answer')
-	React.useEffect(() => {
+
+	useEffect(() => {
 		if (answer) {
 			onAnswerSelect(answer)
 		}

@@ -1,8 +1,13 @@
-import { Question as QuestionType } from '../model/types'
-import LongAnswerQuestion from './LongAnswerQuestion'
-import MultipleChoiceQuestion from './MultipleChoiceQuestion'
-import ShortAnswerQuestion from './ShortAnswerQuestion'
-import SingleChoiceQuestion from './SingleChoiceQuestion'
+import {
+	LongAnswerQuestion,
+	MultipleChoiceQuestion,
+	ShortAnswerQuestion,
+	SingleChoiceQuestion,
+} from '../index'
+import {
+	QuestionType as QuestionEnum,
+	Question as QuestionType,
+} from '../model/types'
 
 interface QuestionProps {
 	question: QuestionType
@@ -10,39 +15,24 @@ interface QuestionProps {
 	savedAnswer?: string | string[] | null
 }
 
+const QuestionComponents = {
+	[QuestionEnum.Single]: SingleChoiceQuestion,
+	[QuestionEnum.Multiple]: MultipleChoiceQuestion,
+	[QuestionEnum.Short]: ShortAnswerQuestion,
+	[QuestionEnum.Long]: LongAnswerQuestion,
+}
+
 function Question({ question, onAnswerSelect }: QuestionProps) {
-	switch (question.type) {
-		case 'single':
-			return (
-				<SingleChoiceQuestion
-					question={question}
-					onAnswerSelect={onAnswerSelect}
-				/>
-			)
-		case 'multiple':
-			return (
-				<MultipleChoiceQuestion
-					question={question}
-					onAnswerSelect={onAnswerSelect}
-				/>
-			)
-		case 'short':
-			return (
-				<ShortAnswerQuestion
-					question={question}
-					onAnswerSelect={onAnswerSelect}
-				/>
-			)
-		case 'long':
-			return (
-				<LongAnswerQuestion
-					question={question}
-					onAnswerSelect={onAnswerSelect}
-				/>
-			)
-		default:
-			return <div>Неизвестный тип вопроса</div>
-	}
+	const SpecificQuestionComponent = QuestionComponents[question.type]
+
+	return SpecificQuestionComponent ? (
+		<SpecificQuestionComponent
+			question={question}
+			onAnswerSelect={onAnswerSelect}
+		/>
+	) : (
+		<div>Неизвестный тип вопроса</div>
+	)
 }
 
 export default Question

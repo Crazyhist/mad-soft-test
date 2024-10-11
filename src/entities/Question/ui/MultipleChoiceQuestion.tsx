@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Question as QuestionType } from '../model/types'
+import { Question } from '../model/types'
 
 interface MultipleChoiceQuestionProps {
-	question: QuestionType
+	question: Question
 	onAnswerSelect: (answer: string[]) => void
 }
 
@@ -12,12 +12,12 @@ const MultipleChoiceQuestion = ({
 	onAnswerSelect,
 }: MultipleChoiceQuestionProps) => {
 	const { register, watch } = useForm<{ answer: string[] }>()
-
-	// Отслеживаем изменения ответов
 	const selectedAnswers = watch('answer') || []
 
 	useEffect(() => {
-		onAnswerSelect(selectedAnswers)
+		if (selectedAnswers) {
+			onAnswerSelect(selectedAnswers)
+		}
 	}, [selectedAnswers, onAnswerSelect])
 
 	return (

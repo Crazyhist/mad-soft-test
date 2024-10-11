@@ -3,9 +3,9 @@ import useTestStore from '@/features/TestProgress/model/useTestStore'
 import { mockTest } from '@/shared/api/mockTest'
 import { formatTime } from '@/shared/utils/timeUtils'
 import { Box, Button, Container, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const TestPage: React.FC = () => {
+const TestPage = () => {
 	const {
 		currentQuestionIndex,
 		timeLeft,
